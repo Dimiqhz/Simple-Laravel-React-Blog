@@ -13,6 +13,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Проверка хоста
+      run: |
+        echo "→${{ secrets.SSH_HOST }}←"
+        echo "LEN=$(echo -n '${{ secrets.SSH_HOST }}' | wc -c)"
+
+
     - name: Setup SSH
       run: |
         mkdir -p ~/.ssh
