@@ -18,6 +18,11 @@ jobs:
         echo "→${{ secrets.SSH_HOST }}←"
         echo "LEN=$(echo -n '${{ secrets.SSH_HOST }}' | wc -c)"
 
+    - name: Byte-level check
+      run: |
+        echo -n "${{ secrets.SSH_HOST }}" | xxd
+
+
 
     - name: Setup SSH
       run: |
