@@ -22,5 +22,5 @@ jobs:
         ssh-keyscan -v -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
     - name: Deploy via rsync
-      run: |
-        rsync -avz --delete ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.TARGET_DIR }}
+      run: 
+        rsync -e "ssh -o StrictHostKeyChecking=no" -avz --delete ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.TARGET_DIR }}
