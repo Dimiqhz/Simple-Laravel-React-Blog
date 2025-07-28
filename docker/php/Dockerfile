@@ -10,13 +10,6 @@ WORKDIR /var/www/html
 
 RUN test -f artisan || composer create-project laravel/laravel .
 
-COPY ./backend/app ./app
-COPY ./backend/routes ./routes
-COPY ./backend/database ./database
-COPY ./backend/tests ./tests
-COPY ./backend/resources ./resources
-COPY ./backend/public ./public
-
 RUN composer install --no-interaction
 
 CMD php artisan serve --host=0.0.0.0 --port=8000
