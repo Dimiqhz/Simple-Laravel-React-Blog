@@ -12,6 +12,8 @@ services:
       - ./backend:/var/www/html
     depends_on:
       - mysql
+    networks:
+      - blognet
 
   frontend:
     build:
@@ -24,6 +26,8 @@ services:
       - ./frontend:/app
     stdin_open: true
     tty: true
+    networks:
+      - blognet
 
   mysql:
     image: mysql:8.0
@@ -37,6 +41,8 @@ services:
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - mysql_data:/var/lib/mysql
+    networks:
+      - blognet
 
   nginx:
     image: nginx:alpine
@@ -49,6 +55,11 @@ services:
     depends_on:
       - backend
       - frontend
+    networks:
+      - blognet
 
 volumes:
   mysql_data:
+
+networks:
+  blognet:
