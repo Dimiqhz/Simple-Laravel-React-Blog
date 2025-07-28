@@ -3,14 +3,13 @@ version: '3.8'
 services:
   backend:
     build:
-      context: .
-      dockerfile: docker/php/Dockerfile
+      context: ./backend
+      dockerfile: ../docker/php/Dockerfile
     container_name: blog_backend
     ports:
       - '8000:8000'
     volumes:
-      - ./:/var/www/html
-      - vendor_data:/var/www/html/vendor
+      - ./backend:/var/www/html
     depends_on:
       - mysql
     networks:

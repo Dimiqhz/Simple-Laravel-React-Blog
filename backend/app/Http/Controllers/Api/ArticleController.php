@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreArticleRequest;
 use App\Models\Article;
 use Illuminate\Http\JsonResponse;
+use App\Services\ArticleService;
 
 /**
  * Контроллер для работы со статьями
