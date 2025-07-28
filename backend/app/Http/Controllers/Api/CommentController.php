@@ -7,6 +7,7 @@ use App\Http\Requests\StoreCommentRequest;
 use App\Models\Article;
 use App\Models\Comment;
 use Illuminate\Http\JsonResponse;
+use App\Services\CommentService;
 
 /**
  * Контроллер для добавления комментариев
@@ -26,8 +27,14 @@ class CommentController extends Controller
      */
     public function store(StoreCommentRequest $request, int $articleId): JsonResponse
     {
-        $article = Article::findOrFail($articleId);
-        $comment = $this->commentService->addToArticle($article, $request->validated());
+        $data = $request->validate([
+        'body'        => 'required|string',
+        'author_name' => 'required|string',
+        ]);
+
+        $comment = \App\Models\Article::findOrFail($articleId)
+                   ->comments()
+                   ->create($data);
 
         return response()->json($comment, 201);
     }

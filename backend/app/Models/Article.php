@@ -1,29 +1,18 @@
 <?php
 
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-/**
- * Модель статьи
- *
- * @property int $id
- * @property string $title
- * @property string $content
- * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Database\Eloquent\Collection|Comment[] $comments
- */
 class Article extends Model
 {
-    protected $fillable = ['title', 'content'];
+    use HasFactory;
 
-    /**
-     * Получить комментарии к статье
-     *
-     * @return HasMany
-     */
-    public function comments(): HasMany
+    protected $fillable = ['title', 'body'];
+
+    public function comments()
     {
         return $this->hasMany(Comment::class);
     }

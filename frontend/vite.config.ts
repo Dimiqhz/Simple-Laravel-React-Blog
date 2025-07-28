@@ -2,29 +2,28 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  root: 'public',
+  publicDir: 'public',
   plugins: [react()],
   server: {
-    host: true,
+    host: '0.0.0.0',
     port: 3000,
     strictPort: true,
-    fs: {
-      strict: false,
+    hmr: false,     
+    proxy: {
+      '/api': {
+        target: 'http://backend:8000',
+        changeOrigin: true,
+        secure: false,
+      },
     },
-    watch: {
-      usePolling: true
-    },
-    allowedHosts: 'all'
-  },
-  preview: {
-    port: 3000,
+    fs: { strict: false },
+    watch: { usePolling: true },
+    allowedHosts: 'all',
   },
   resolve: {
-    alias: {
-      '@': '/src',
-    },
+    alias: { '@': '/src' },
   },
   build: {
     outDir: 'dist',
-  }
+  },
 })

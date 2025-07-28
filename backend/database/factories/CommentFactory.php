@@ -14,11 +14,12 @@ class CommentFactory extends Factory
 {
     protected $model = Comment::class;
 
-    public function definition(): array
+    public function definition()
     {
         return [
+            'article_id' => \App\Models\Article::factory(),
+            'body'       => $this->faker->sentence(),
             'author_name' => $this->faker->name(),
-            'content' => $this->faker->sentence(10),
         ];
     }
 }

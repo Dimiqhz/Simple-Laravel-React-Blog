@@ -13,7 +13,7 @@ class StoreCommentRequest extends FormRequest
     {
         return [
             'author_name' => 'required|string|max:100',
-            'content' => 'required|string|max:1000',
+            'body'    => 'required|string',
         ];
     }
 

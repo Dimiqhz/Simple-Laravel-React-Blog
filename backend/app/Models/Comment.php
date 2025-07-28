@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Модель комментария
@@ -16,7 +17,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Comment extends Model
 {
-    protected $fillable = ['article_id', 'author_name', 'content'];
+    use HasFactory;
+
+    protected $fillable = ['article_id', 'body', 'author_name', 'content'];
 
     /**
      * Получить статью, к которой относится комментарий
