@@ -7,8 +7,8 @@ A blog based on RestAPI and created using Laravel, React and Docker. The project
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/Dimiqhz/polis-test-task.git
-cd blog
+git clone https://github.com/Dimiqhz/Simple-Laravel-React-Blog.git
+cd Simple-Laravel-React-Blog
 ```
 
 ### 2. Start the application
