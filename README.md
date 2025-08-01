@@ -1,23 +1,23 @@
 
-# Polis.online - тестовое задание
+# A simple RestAPI blog created using React, Laravel and Docker
 
----
+A blog based on RestAPI and created using Laravel, React and Docker. The project was performed as a test task.
 
-## 🚀 Запуск проекта 
+## 🚀 Project Launch
 
-### 1. Клонируйте репозиторий
+### 1. Clone the repository
 ```bash
 git clone https://github.com/Dimiqhz/polis-test-task.git
 cd blog
 ```
 
-### 2. Запуск приложения
+### 2. Start the application
 ```bash
 docker-compose build
 docker-compose up -d
 ```
 
-### 3. Установка зависимостей
+### 3. Install dependencies
 
 #### Backend (Laravel)
 ```bash
@@ -32,90 +32,90 @@ docker-compose exec backend php artisan migrate --seed
 docker-compose exec frontend npm install
 ```
 
-### 🎉 Проект доступен по адресу:
+### 🎉 Project available at:
 - Frontend: [`http://localhost`](http://localhost)
 - Backend API: [`http://localhost:8000/api`](http://localhost:8000/api)
 
 ---
 
-## 🛠️ Команды управления приложением
+## 🛠️ Application Management Commands
 
-| Команда                                             | Описание                      |
-|-----------------------------------------------------|--------------------------------|
-| `docker-compose up -d`                              | Запустить проект в фоне        |
-| `docker-compose down`                               | Остановить проект              |
-| `docker-compose exec backend php artisan migrate`   | Выполнить миграции БД          |
-| `docker-compose exec backend php artisan db:seed`   | Заполнить базу тестовыми данными |
-| `docker-compose logs -f backend`                    | Посмотреть логи Backend        |
-| `docker-compose logs -f frontend`                   | Посмотреть логи Frontend       |
-
----
-
-## 📌 Маршруты приложения (API):
-
-| Метод | Маршрут                                | Описание                          |
-|-------|----------------------------------------|-----------------------------------|
-| GET   | `/api/articles`                        | Список всех статей                |
-| GET   | `/api/articles/{id}`                   | Получить конкретную статью        |
-| POST  | `/api/articles`                        | Создать новую статью              |
-| POST  | `/api/articles/{id}/comments`          | Создать комментарий к статье      |
+| Command                                             | Description                        |
+|-----------------------------------------------------|------------------------------------|
+| `docker-compose up -d`                              | Run the project in the background  |
+| `docker-compose down`                               | Stop the project                   |
+| `docker-compose exec backend php artisan migrate`   | Run database migrations            |
+| `docker-compose exec backend php artisan db:seed`   | Seed the database with test data   |
+| `docker-compose logs -f backend`                    | View backend logs                  |
+| `docker-compose logs -f frontend`                   | View frontend logs                 |
 
 ---
 
-## 📑 Примеры API-запросов
+## 📌 Application Routes (API):
 
-### 1. Получить список статей
+| Method | Route                                  | Description                        |
+|--------|----------------------------------------|------------------------------------|
+| GET    | `/api/articles`                        | Get all articles                   |
+| GET    | `/api/articles/{id}`                   | Get a specific article             |
+| POST   | `/api/articles`                        | Create a new article               |
+| POST   | `/api/articles/{id}/comments`          | Post a comment to an article       |
+
+---
+
+## 📑 API Request Examples
+
+### 1. Get all articles
 ```bash
 curl -X GET http://localhost:8000/api/articles
 ```
 
-**Ответ:**
+**Response:**
 ```json
 [
   {
     "id": 1,
-    "title": "Название статьи",
-    "body": "Текст статьи"
+    "title": "Article title",
+    "body": "Article content"
   }
 ]
 ```
 
 ---
 
-### 2. Создать новую статью
+### 2. Create a new article
 ```bash
 curl -X POST http://localhost:8000/api/articles \
 -H "Content-Type: application/json" \
--d '{"title":"Новая статья","body":"Содержимое статьи"}'
+-d '{"title":"New Article","body":"Article content"}'
 ```
 
-**Ответ:**
+**Response:**
 ```json
 {
   "id": 2,
-  "title": "Новая статья",
-  "body": "Содержимое статьи"
+  "title": "New Article",
+  "body": "Article content"
 }
 ```
 
 ---
 
-### 3. Получить статью по ID
+### 3. Get article by ID
 ```bash
 curl -X GET http://localhost:8000/api/articles/2
 ```
 
-**Ответ:**
+**Response:**
 ```json
 {
   "id": 2,
-  "title": "Новая статья",
-  "body": "Содержимое статьи",
+  "title": "New Article",
+  "body": "Article content",
   "comments": [
     {
       "id": 1,
-      "author_name": "Иван",
-      "body": "Отличная статья!"
+      "author_name": "Ivan",
+      "body": "Great article!"
     }
   ]
 }
@@ -123,30 +123,28 @@ curl -X GET http://localhost:8000/api/articles/2
 
 ---
 
-### 4. Создать комментарий к статье
+### 4. Post a comment to an article
 ```bash
 curl -X POST http://localhost:8000/api/articles/2/comments \
 -H "Content-Type: application/json" \
--d '{"author_name":"Анна","body":"Спасибо за материал!"}'
+-d '{"author_name":"Anna","body":"Thanks for the material!"}'
 ```
 
-**Ответ:**
+**Response:**
 ```json
 {
   "id": 2,
   "article_id": 2,
-  "author_name": "Анна",
-  "body": "Спасибо за материал!"
+  "author_name": "Anna",
+  "body": "Thanks for the material!"
 }
 ```
 
 ---
 
-## 🧱 Стек технологий
+## 🧱 Tech Stack
 - Backend: **Laravel 12** (PHP 8.2), **MySQL**
 - Frontend: **React 19**, **TypeScript**, **Bootstrap 5**
-- Контейнеризация: **Docker**, **docker-compose**
-- Веб-сервер: **Nginx**
-
----
+- Containerization: **Docker**, **docker-compose**
+- Web Server: **Nginx**
 
