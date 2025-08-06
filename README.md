@@ -144,7 +144,7 @@ curl -X POST http://localhost:8000/api/articles/2/comments \
 
 ## 🧱 Tech Stack
 - Backend: **Laravel 12** (PHP 8.2), **MySQL**
-- Frontend: **React 19**, **TypeScript**, **Bootstrap 5**
+- Frontend: **React 18**, **TypeScript**, **Bootstrap 5**
 - Containerization: **Docker**, **docker-compose**
 - Web Server: **Nginx**
 
